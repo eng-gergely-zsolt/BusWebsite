@@ -1,0 +1,157 @@
+﻿.navbar .navbar-nav {
+    float: none;
+    vertical-align: top;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+    padding: 10px;
+}
+
+.navbar .MenuButtons {
+    padding: 20px;
+    color: white;
+    
+}
+
+.navbar-nav.navbar-center {
+    float: none;
+    position: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    left:0;
+    right:0;
+    margin:0;
+}
+
+.left {
+    width: 25%;
+    border: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    z-index: 999999;
+}
+
+
+.right {
+    width: 75%;
+    float: right;
+    margin: 0;
+}
+
+.left, .right {
+    display: inline-block;
+    zoom: 1;
+    vertical-align: top;
+    background-color: #333;
+    margin: 0;
+}
+
+#anim {
+    position: relative;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 2em;
+    letter-spacing: 4px;
+    overflow: hidden;
+    background: linear-gradient(90deg, #000, #fff, #000);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: animate 3s linear infinite;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+@keyframes animate {
+    0% {
+        background-position: -500%;
+    }
+
+    100% {
+        background-position: 500%;
+    }
+}
+
+
+#textAnim {
+    color: black;
+    white-space: nowrap;
+    position: absolute;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+    transition: 0.3s;
+    text-shadow: 1px 1px 0 white, 1px 2px 0 white, 1px 3px 0 white, 1px 4px 0 grey, 1px 5px 0 grey, 1px 6px 0 grey, 1px 7px 0 grey, 1px 8px 0 grey, 5px 13px 15px black;
+}
+
+    #textAnim:hover {
+        transition: 0.3s;
+        transform: scale(1.1)translate(-50%, -50%);
+        text-shadow: 1px -1px 0 grey, 1px -2px 0 grey, 1px -3px 0 grey, 1px -4px 0 grey, 1px -5px 0 grey, 1px -6px 0 grey, 1px -7px 0 grey, 1px -8px 0 grey, 5px -13px 15px black, 5px -13px 25px #808080;
+    }
+
+
+
+img.center {
+    position: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+
+footer {
+    position:absolute;
+    height:5%;
+    bottom: 0;
+    width: 100%;
+    text-align:center;
+    color:black;
+}
+
+.card-body {
+    position: center;
+    padding: initial;
+    margin: 0;
+}
+
+
+
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+
+.bg {
+    /* The image used */
+    background-image: url("../Images/bg6.jpg");
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-size:inherit;
+    position:fixed;
+    top: 0;
+    bottom:0;
+    width: 100%;
+    height: 100%;
+}
+
+.selectedRow{
+    background-color: aqua;
+}

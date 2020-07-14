@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<style>
+    input[type=button], input[type=submit], input[type=reset] {
+        background-color: #9C9C9C;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    #title {
+    position: relative;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 2em;
+    letter-spacing: 4px;
+    overflow: hidden;
+    background: linear-gradient(90deg, #000, #fff, #000);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: animate 3s linear infinite;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+
+
+
+
+</style>
+
+
+<h2 align="center" id="title">Contact Our Team!</h2>
+<h4 style="color:white">Please send your message below. We will get back to you at the earliest!</h4>
+
+<form action="MAILTO:szilviakis97@gmail.com" method="post" enctype="text/plain">
+  
+    Name:<br>
+    <input type="text" name="Name " onfocus="this.value=''" value="Add your name"><br><br>
+    E-mail:<br>
+    <input type="text" name="E-mail address " onfocus="this.value=''" value="Add your email"><br><br>
+    Comment:<br>
+    <input type="text" name="Comment " onfocus="this.value=''" value="Here you can write your question" size="50"><br><br>
+    <input type="submit" value="Send">
+    <input type="reset" value="Reset">
+</form>

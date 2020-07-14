@@ -1,0 +1,338 @@
+﻿<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <style>
+        .box {
+            position: absolute;
+            float:left;
+        }
+
+            .box select {
+                background-color: #0563af;
+                color: white;
+                padding: 14px;
+                border: none;
+                box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+                -webkit-appearance: button;
+                appearance: button;
+                outline: none;
+            }
+
+            /*.box::before {
+                content: "\f107";
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 20%;
+                height: 100%;
+                text-align: center;
+                font-size: 28px;
+                line-height: 45px;
+                color: rgba(255, 255, 255, 0.5);
+                background-color: rgba(255, 255, 255, 0.1);
+                pointer-events: none;
+            }
+                */
+            .box:hover::before {
+                color: rgba(255, 255, 255, 0.6);
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+
+            .box select option {
+                padding: 30px;
+            }
+
+        #mapid {
+            height: 600px;
+        }
+
+        .hidden{
+            display:none;
+        }
+
+        ul {
+            position: static;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+                li a:hover:not(.active) {
+                    background-color: #4495cf;
+                    color: white;
+                }
+
+                li a:hover, a:focus {
+                    color: white;
+                }
+
+        .active {
+            background-color: #4495cf;
+            color: white;
+        }
+
+        .selected {
+            background-color: #0563af;
+            color: white;
+        }
+    </style>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+            crossorigin=""></script>
+</head>
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <ul>
+        <li><a id="Bus" href="#">Bus</a></li>
+        <li><a id="stations" href="#">Stations</a></li>
+        <li><a id="lines" href="#">Lines</a></li>
+        <li><div class="box">
+        <select class="hidden" id="dropdown">
+            <option title="Please select a bus." value="-1">Routes</option>
+            @foreach (var bus in ViewBag.Bus)
+            {
+                @:<option title="@bus.BusId" value="@bus.BusId">@bus.BusName</option>
+            }
+        </select></div>
+    </li>
+    </ul>
+    
+    <div id="mapid"></div>
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            mypos = [position.coords.latitude, position.coords.longitude];
+            markMyLocation();
+        }
+
+        function markMyLocation() {
+            marker = L.marker([46.523454, 24.598617]/*mypos*/).addTo(mymap);
+            //console.log(position.coords.latitude + " " + position.coords.longitude);
+            marker.bindPopup("<b>Hello user!</b><br>That's your location.").openPopup();
+        }
+        /////////////////////Events//////////////////////////////
+        var elm = document.getElementById("Bus");
+        elm.onclick=(function (event) {
+            event.preventDefault();
+            if (mymap.hasLayer(BusLayer)) {
+                $(this).removeClass('selected');
+                mymap.removeLayer(BusLayer);
+            } else {
+                $("#dropdown").addClass('hidden');
+                $("#lines").removeClass('selected');
+                if (mymap.hasLayer(LineLayer)) {
+                    mymap.removeLayer(LineLayer);
+                }
+                mymap.addLayer(BusLayer);
+                $(this).addClass('selected');
+            }
+        });
+
+        var elm = document.getElementById("stations");
+        elm.onclick = (function (event) {
+            event.preventDefault();
+            if (mymap.hasLayer(StationsLayer)) {
+                $(this).removeClass('selected');
+                mymap.removeLayer(StationsLayer);
+            } else {
+                $("#dropdown").addClass('hidden');
+                $("#lines").removeClass('selected');
+                if (mymap.hasLayer(LineLayer)) {
+                    mymap.removeLayer(LineLayer);
+                }
+                mymap.addLayer(StationsLayer);
+                $(this).addClass('selected');
+            }
+        });
+
+        var elm = document.getElementById("lines");
+        elm.onclick = (function (event) {
+            event.preventDefault();
+            if (mymap.hasLayer(BusLayer)) {
+                $("#Bus").removeClass('selected');
+                mymap.removeLayer(BusLayer);
+            }
+            if (mymap.hasLayer(StationsLayer)) {
+                $("#stations").removeClass('selected');
+                mymap.removeLayer(StationsLayer);
+            }
+            i = $("#dropdown")
+            if (i.hasClass('hidden') == true) {
+                i.removeClass('hidden');
+                $(this).addClass('selected');
+            } else {
+                i.addClass('hidden');
+                $(this).removeClass('selected');
+                if (mymap.hasLayer(LineLayer)) {
+                    mymap.removeLayer(LineLayer);
+                }
+            }
+        });
+
+        var elm = document.getElementById("dropdown");
+        elm.onchange = (function (event) {
+            if (mymap.hasLayer(LineLayer)) {
+                mymap.removeLayer(LineLayer);
+            }
+            var selectedid = $(this).val();//off
+            if (selectedid != '-1') {
+                var temp = tracesList.map(function (s) {
+                    if (s.BusId == selectedid) { return [s.Latitude, s.Longitude] } else { return null };
+                });
+                temp = temp.filter(function (el) {
+                    return el != null;
+                });
+                if (temp.length != 0) {
+                    var firstpolyline = new L.Polyline(temp, {
+                        color: 'blue',
+                        weight: 3,
+                        opacity: 0.5,
+                        smoothFactor: 1
+                    });
+                    var actbus = busList.find(function (element) {
+                        return element.BusId == selectedid;
+                    });
+                    var marked = L.marker([actbus.Latitude, actbus.Longitude]).bindPopup("<b>" + actbus.BusId + "</b><br>" + actbus.BusName);
+
+                    LineLayer = L.layerGroup([firstpolyline, marked]);
+                    mymap.addLayer(LineLayer);
+                }
+            }
+        });
+        //////////////////////////Data////////////////////////////
+        var tracesList = [];
+        @foreach (var bus in ViewBag.BusTrace)
+        {
+           @:tracesList.push({ "Id": "@bus.Id", "BusId": "@bus.BusId", "Longitude": parseFloat("@bus.Longitude".replace(',', '.')),"Latitude": parseFloat("@bus.Latitude".replace(',', '.'))});
+        }
+        var LineLayer;
+        /*
+        var temp = tracesList.map(function (s) {
+            if(s.BusId = "27") { return [s.Latitude, s.Longitude] };
+        });
+        var firstpolyline = new L.Polyline(temp, {
+            color: 'red',
+            weight: 3,
+            opacity: 0.5,
+            smoothFactor: 1
+        });
+        var LineLayer = L.layerGroup([firstpolyline]);
+        */
+
+        var busList = [];
+        @foreach (var bus in ViewBag.Bus)
+        {
+           @:busList.push({ "BusName": "@bus.BusName", "BusId": "@bus.BusId", "Longitude": parseFloat("@bus.Actual_Longitude".replace(',', '.')),"Latitude": parseFloat("@bus.Actual_Latitude".replace(',', '.'))});
+        }
+
+        var temp = busList.map(function (s) {
+            return L.marker([s.Latitude, s.Longitude]).bindPopup("<b>" + s.BusId + "</b><br>" + s.BusName);
+        });
+        var BusLayer = L.layerGroup(temp);
+
+        var stationList = [];
+        @foreach (var st in ViewBag.Stations)
+        {
+           @:stationList.push({ "StationName": "@st.StationName", "StationID": "@st.StationID", "Longitude": parseFloat("@st.Longitude".replace(',', '.')),"Latitude": parseFloat("@st.Latitude".replace(',', '.'))});
+        }
+        var greenIcon = new L.Icon({
+            iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+        var temp = stationList.map(function (s) {
+            return L.marker([s.Latitude, s.Longitude], { icon: greenIcon }).bindPopup(s.StationName);
+        });
+        var StationsLayer = L.layerGroup(temp);
+        //////////////////////////////////////////////////////
+        var mypos;
+        //var marker;
+        var mymap = L.map('mapid').setView([46.5, 24,39], 13);
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoiam9yZHkzMyIsImEiOiJjanRnMWNqaXUxejMzNDl0NTFrdXZrMzhoIn0.UMMjORn922XIANL-aOc8zA', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox.streets',
+            accessToken: 'your.mapbox.access.token'
+        }).addTo(mymap);
+
+        document.body.onload = getLocation;
+
+
+
+
+
+        /*
+        L.Routing.control({
+            waypoints: [
+                L.latLng(46.523454, 24.598617),
+                L.latLng(46.5117342, 24.5110409)
+            ],
+            routeWhileDragging: true
+        }).addTo(mymap);
+        */
+
+
+        /*
+        var circle = L.circle([46.523674547994766, 24.599113591698256], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 50
+        }).addTo(mymap);
+        var polygon = L.polygon([
+            [46.522812, 24.598669],
+            [46.522812, 24.598669],
+            [46.522812, 24.598669]
+        ]).addTo(mymap);
+
+
+        polygon.bindPopup("I am a polygon.");
+        var popup = L.popup()
+            .setLatLng([46.523454, 24.598617])
+            .setContent("I am a standalone popup.")
+            .openOn(mymap);
+            */
+
+
+        function onMapClick(e) {
+            alert("You clicked the map at " + e.latlng);
+        }
+
+        //mymap.on('click', onMapClick);
+    </script>
+</body>
+</html>

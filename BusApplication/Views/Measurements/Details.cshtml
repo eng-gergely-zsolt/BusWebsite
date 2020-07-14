@@ -1,0 +1,138 @@
+﻿@model BusApplication.Models.Measurements
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Measurements</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BusId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BusId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Position_Accuracy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Position_Accuracy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Speed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Speed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Speed_Accuracy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Speed_Accuracy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Accel_x)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Accel_x)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Accel_y)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Accel_y)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Accel_z)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Accel_z)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gyro_x)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gyro_x)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gyro_y)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gyro_y)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gyro_z)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gyro_z)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Timestamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Timestamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trace_Match)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trace_Match)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

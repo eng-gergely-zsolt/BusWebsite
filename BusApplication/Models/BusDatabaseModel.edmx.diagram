@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e26ec06708394798b76e9ef46ee96d17" Name="Diagram1">
+        <EntityTypeShape EntityType="BusDBModel.BusData" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBModel.BusDriverData" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBModel.Bus" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBModel.BusPosition" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBModel.BusTrace" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBModel.CarData" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBModel.Line" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBModel.MeasuredData" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBModel.Measurement" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBModel.Reference" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBModel.SimulatedBu" Width="1.5" PointX="3" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBModel.Station" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBModel.Timetable" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="BusDBModel.FK_BusData_Buses" ManuallyRouted="false" />
+        <AssociationConnector Association="BusDBModel.FK_BusDriverData_Buses" ManuallyRouted="false" />
+        <AssociationConnector Association="BusDBModel.FK_BusPositions_Buses" ManuallyRouted="false" />
+        <AssociationConnector Association="BusDBModel.FK_CarData_Buses" ManuallyRouted="false" />
+        <AssociationConnector Association="BusDBModel.FK_SimulatedBus_Buses" ManuallyRouted="false" />
+        <AssociationConnector Association="BusDBModel.FK_Line_Station" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

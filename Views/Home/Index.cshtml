@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Where is my bus?</h1>
+    <p class="lead">Check the map!</p>
+   
+</div>
+
+<ul class="row">
+    <li class="col-md-4">
+        <h2>@Html.ActionLink("Stations", "Index", "Stations")</h2>
+
+    </li>
+    <li class="col-md-4">
+        <h2>@Html.ActionLink("Lines", "Index", "Lines")</h2>
+    </li>
+    <li class="col-md-4">
+        <h2>@Html.ActionLink("References", "Index", "References")</h2>
+    </li>
+    <li class="col-md-4">
+        <h2>@Html.ActionLink("Timetables", "Index", "Timetables")</h2>
+    </li>
+    <li class="col-md-4">
+        <h2>@Html.ActionLink("BusTraces", "Index", "BusTraces")</h2>
+    </li>
+    <li class="col-md-4">
+        <h2>@Html.ActionLink("MeasuredDatas", "Index", "MeasuredDatas")</h2>
+    </li>
+
+
+</ul>

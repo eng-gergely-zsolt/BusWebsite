@@ -1,0 +1,58 @@
+﻿@model BusApplication.Models.BusData
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BusData</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Actual_Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actual_Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Actual_Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actual_Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Measurement_Timestamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Measurement_Timestamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Actual_Speed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actual_Speed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Buses.BusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Buses.BusName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

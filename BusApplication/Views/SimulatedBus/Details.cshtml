@@ -1,0 +1,42 @@
+﻿@model BusApplication.Models.SimulatedBus
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SimulatedBus</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LastCheckin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastCheckin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Measurement_Timestamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Measurement_Timestamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Buses.BusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Buses.BusName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

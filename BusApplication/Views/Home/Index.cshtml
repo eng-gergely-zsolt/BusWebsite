@@ -1,0 +1,35 @@
+﻿
+
+<div class="card text-center" style="color:white; padding:20px; background-color:#CACACA; padding-top:20px;">
+
+    <h1 id="anim" style="padding:20px; background-color:black; font-family:'Comic Sans MS';">Where is your bus?</h1>
+    <img src="https://www.shareicon.net/data/2015/09/21/644142_pin_512x512.png" class="center" style="width:120px;height:120px;">
+    <p id="textAnim" style="font-family:'Lucida Sans'; font-size:30px; color:red"> @Html.ActionLink("Check the map!", "Map", "Home", new { @style = "color:black;" } ) </p>
+ 
+
+</div>
+<div class="card-body card-img" style="align-content:center; background-color: #A3A3A3; opacity:0.5">
+    <img src="" />   
+
+</div>
+
+
+<ul class="row">
+    <li class="col-md-4">
+        <h2>@Html.ActionLink("Stations", "Index", "Stations")</h2>
+    </li>
+    <li class="col-md-4">
+        <h2>@Html.ActionLink("Lines", "Index", "Lines")</h2>
+    </li>
+    <li class="col-md-4">
+        <h2>@Html.ActionLink("References", "Index", "References")</h2>
+    </li>
+    <li class="col-md-4">
+        <h2>@Html.ActionLink("Timetables", "Index", "Timetables")</h2>
+    </li>
+
+
+   
+
+
+</ul>

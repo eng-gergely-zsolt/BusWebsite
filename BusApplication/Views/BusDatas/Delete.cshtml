@@ -1,0 +1,64 @@
+﻿@model BusApplication.Models.BusData
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>BusData</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Actual_Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actual_Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Actual_Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actual_Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Measurement_Timestamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Measurement_Timestamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Actual_Speed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actual_Speed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Buses.BusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Buses.BusName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

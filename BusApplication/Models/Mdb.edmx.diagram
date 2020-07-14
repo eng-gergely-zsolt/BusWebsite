@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bdc6feba329543c29b4701c95269b19b" Name="Diagram1">
+        <EntityTypeShape EntityType="BusDBlatestModel.BusData" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBlatestModel.BusDriverData" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBlatestModel.Buses" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBlatestModel.BusPositions" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBlatestModel.BusTrace" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBlatestModel.CarData" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBlatestModel.Line" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBlatestModel.MeasuredData" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBlatestModel.Measurements" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBlatestModel.References" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBlatestModel.SimulatedBus" Width="1.5" PointX="3" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBlatestModel.Station" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusDBlatestModel.Timetable" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="BusDBlatestModel.FK_BusData_Buses" ManuallyRouted="false" />
+        <AssociationConnector Association="BusDBlatestModel.FK_BusDriverData_Buses" ManuallyRouted="false" />
+        <AssociationConnector Association="BusDBlatestModel.FK_BusPositions_Buses" ManuallyRouted="false" />
+        <AssociationConnector Association="BusDBlatestModel.FK_CarData_Buses" ManuallyRouted="false" />
+        <AssociationConnector Association="BusDBlatestModel.FK_SimulatedBus_Buses" ManuallyRouted="false" />
+        <AssociationConnector Association="BusDBlatestModel.FK_Line_Station" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

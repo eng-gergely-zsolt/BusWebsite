@@ -1,0 +1,117 @@
+﻿@model IEnumerable<BusApplication.Models.Measurements>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BusId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Position_Accuracy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Speed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Speed_Accuracy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direction)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Accel_x)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Accel_y)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Accel_z)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gyro_x)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gyro_y)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gyro_z)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Timestamp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trace_Match)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BusId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Position_Accuracy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Speed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Speed_Accuracy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direction)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Accel_x)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Accel_y)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Accel_z)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gyro_x)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gyro_y)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gyro_z)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Timestamp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trace_Match)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

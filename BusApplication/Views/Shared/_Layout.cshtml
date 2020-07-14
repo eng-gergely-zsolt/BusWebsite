@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title Where is your bus?</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="bg">
+
+    @*<nav class="navbar navbar-expand-lg navbar-fixed-top" style="background-color:#9C9C9C">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="nav navbar-nav">
+                <li class="nav-item" style="font-family:Elephant; font-size:x-large">
+                    @Html.ActionLink("Map", "Map", "Home", null, new { @class = "MenuButtons" })
+
+                </li>
+                <li class="nav-item" style="font-family:Elephant; font-size:x-large">
+                    @Html.ActionLink("Contact Us", "About", "Home", null, new { @class = "MenuButtons" })
+
+                </li>
+            </ul>
+        </div>
+    </nav>*@
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        @*<footer class="foot" style="background-color:#A0A0A0; font-family:Elephant;">
+            <p>&copy; @DateTime.Now.Year - All rights reserved</p>
+        </footer>*@
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
